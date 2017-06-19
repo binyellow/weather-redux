@@ -10,8 +10,9 @@ class WeatherContainder extends Component{
   }
 }
 const mapStateToProps=(state)=>{
-  // console.log("container props:weathers"+state.WeatherReducer.weathers)
-  return{weathers:state.WeatherReducer.weathers}
+  return{
+      weathers:state.WeatherReducer.weathers
+  }
 }
 const mapDispatchToProps=(dispatch)=>{
   return{

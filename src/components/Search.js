@@ -22,7 +22,7 @@ class Search extends Component{
   }
   render(){
     return (
-      <div>
+      <div className="inner_search">
         <input ref={val => {this.input = val}} placeholder="你的城市下雨了，我想问你有没有带伞..."></input>
         <button onClick={this.handClick.bind(this)}>搜索</button>
         <div>

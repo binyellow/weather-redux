@@ -36,13 +36,14 @@ class SearchContainder extends Component{
         this.props.addCity(localcitys);//存到state不用管 reducer里面本来就存了之前的
     }
   }
-  _saveWeather(city,details,curTem){
+  _saveWeather(city,details,ganmao,curTem){
     this.props.addWeather({
       city:city,
       details:details,
+      ganmao:ganmao,
       wendu:curTem
     })
-    localStorage.setItem('weathers', JSON.stringify({city:city,details:details,wendu:curTem}));
+    localStorage.setItem('weathers', JSON.stringify({city:city,details:details,ganmao:ganmao,wendu:curTem}));
     // console.log(this.props.weathers);
   }
   handSubmit(textInput){
@@ -57,7 +58,7 @@ class SearchContainder extends Component{
       //检查响应文本
       response.json().then(function(data) {
         // console.log(data.data);
-        that._saveWeather(data.data.city,data.data.forecast,data.data.wendu);
+        that._saveWeather(data.data.city,data.data.forecast,data.data.ganmao,data.data.wendu);
         that._saveCity(data.data.city);
       });
     }).catch(function(err) {
@@ -86,8 +87,8 @@ class SearchContainder extends Component{
       }
       //检查响应文本
       response.json().then(function(data) {
-        console.log(data.data);
-        that._saveWeather(data.data.city,data.data.forecast,data.data.wendu);
+        // console.log(data.data);
+        that._saveWeather(data.data.city,data.data.forecast,data.data.ganmao,data.data.wendu);
       });
     }).catch(function(err) {
       console.log("Fetch错误:" + err);
